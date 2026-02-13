@@ -1,0 +1,203 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KODAK LOGISTICS | KNUST Student Storage & Pickup</title>
+    <meta name="description" content="Affordable, secure student storage & hostel pickup service in Kumasi. Store bags, fridges & essentials stress-free during vacation.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loading">
+    <div class="loader"></div>
+</div>
+
+<!-- WHATSAPP FLOAT BUTTON -->
+<a href="https://wa.me/233545025296?text=Hello%20Kodak%20Logistics%2C%20I%20want%20to%20book%20storage" class="whatsapp-btn" target="_blank">
+    💬 Book on WhatsApp
+</a>
+
+<!-- NAVBAR -->
+<header>
+    <nav class="navbar">
+        <div class="logo">
+            KODAK LOGISTICS
+            <span class="tagline">📍 KNUST – Premium Student Pickup & Storage</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#prices">Prices</a></li>
+            <li><a href="#book">Book Now</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+    <div class="hero-content">
+        <h1>Secure Student Storage<br>+ Hostel Pickup</h1>
+        
+        <p class="hero-subtitle">
+            Store your bags, fridges, buckets & essentials safely during vacation.<br>
+            Pickup directly from your hostel – protected warehouse near KNUST.
+        </p>
+
+        <div class="hero-buttons">
+            <a href="#book" class="btn-primary">Book Now</a>
+            <a href="#prices" class="btn-secondary">See Prices</a>
+        </div>
+
+        <ul class="trust-bullets">
+            <li>✓ Pickup included</li>
+            <li>✓ Free buckets</li>
+            <li>✓ 100+ happy KNUST students</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+    <div class="section-header">
+        <h2>About Kodak Logistics</h2>
+    </div>
+    <div class="about-content">
+        <p>We are a student-focused storage & pickup service made <strong>for KNUST students</strong>.</p>
+        <p>Our secure, CCTV-monitored warehouse is located in Kumasi (very close to campus). We pick up items directly from your hostel and return them after vacation – no stress.</p>
+        <p><strong>Trusted • Secure • Affordable • Student-first</strong></p>
+    </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="prices">
+    <div class="section-header">
+        <h2>Transparent Semester Prices</h2>
+        <p>One price covers storage until the start of next semester. Pickup included.</p>
+    </div>
+    <div class="price-cards">
+        <div class="card">
+            <h3>Small Bag</h3>
+            <p class="price">₵40</p>
+            <span>Jute / Traveling bag</span>
+        </div>
+        <div class="card">
+            <h3>Medium Bag</h3>
+            <p class="price">₵50</p>
+            <span>Jute / Traveling bag</span>
+        </div>
+        <div class="card">
+            <h3>Big Bag</h3>
+            <p class="price">₵60</p>
+            <span>Jute / Traveling bag</span>
+        </div>
+        <div class="card highlight">
+            <h3>Fridge (Any Size)</h3>
+            <p class="price">₵70</p>
+            <span>Includes safe storage</span>
+        </div>
+        <div class="card free">
+            <h3>Buckets & Small Items</h3>
+            <p class="price">FREE</p>
+            <span>No extra charge</span>
+        </div>
+    </div>
+</section>
+
+<!-- BOOKING -->
+<section class="booking" id="book">
+    <div class="section-header">
+        <h2>Book Your Pickup & Storage</h2>
+        <p>We usually confirm within 30–60 minutes during the day.</p>
+    </div>
+
+    <form class="booking-form" id="bookingForm">
+
+        <div class="form-group">
+            <input type="text" id="name" required placeholder=" ">
+            <label>Full Name</label>
+        </div>
+
+        <div class="form-group">
+            <input type="tel" id="phone" required pattern="[0-9]{9,12}" placeholder=" ">
+            <label>Phone Number (WhatsApp preferred)</label>
+        </div>
+
+        <div class="form-group">
+            <input type="email" id="email" placeholder=" ">
+            <label>Email (optional)</label>
+        </div>
+
+        <div class="form-group">
+            <input type="text" id="hostel" required placeholder=" ">
+            <label>Hostel / Exact Pickup Location</label>
+        </div>
+
+        <div class="form-row date-time-row">
+            <div class="form-group">
+                <input type="date" id="date" required placeholder=" ">
+                <label>Preferred Pickup Date</label>
+            </div>
+
+            <div class="form-group">
+                <input type="time" id="time" required placeholder=" ">
+                <label>Preferred Pickup Time</label>
+            </div>
+        </div>
+
+        <div id="itemsContainer">
+            <div class="item-row">
+                <select class="itemSelect" required>
+                    <option value="">Select Item</option>
+                    <option value="40">Small Bag – ₵40</option>
+                    <option value="50">Medium Bag – ₵50</option>
+                    <option value="60">Big Bag – ₵60</option>
+                    <option value="70">Fridge (any size) – ₵70</option>
+                    <option value="0">Buckets / Small items – Free</option>
+                </select>
+                <input type="number" class="quantity" min="1" value="1" required>
+            </div>
+        </div>
+
+        <button type="button" id="addItem" class="add-btn">+ Add Another Item</button>
+
+        <div class="form-group">
+            <textarea id="description" rows="3" placeholder="e.g. number of bags, colour, special instructions..."></textarea>
+            <label>Additional Notes / Description (optional)</label>
+        </div>
+
+        <div class="total-section">
+            <p><strong>Total Amount:</strong> ₵<span id="totalPrice">0</span></p>
+            <small id="itemsSummary"></small>
+        </div>
+
+        <button type="submit" class="btn-primary">Send Booking Request</button>
+        <p class="form-note">You will receive confirmation via WhatsApp or call shortly.</p>
+    </form>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <p>© 2026 KODAK LOGISTICS • WhatsApp: <a href="https://wa.me/233545025296">054 502 5296</a></p>
+    <p>Kumasi – Serving KNUST students</p>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="script.js"></script>
+
+<!-- Loader hide script -->
+<script>
+    window.addEventListener('load', function() {
+        const loader = document.getElementById('loading');
+        if (loader) {
+            loader.style.opacity = '0';
+            setTimeout(() => { loader.style.display = 'none'; }, 600);
+        }
+    });
+</script>
+
+</body>
+</html>
