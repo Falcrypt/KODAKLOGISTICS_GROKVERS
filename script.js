@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const totalPriceEl = document.getElementById("totalPrice");
     const itemsSummaryEl = document.getElementById("itemsSummary");
 
-    // Update total and summary (used everywhere)
+    // Update total and summary
     function updateTotalAndSummary() {
         let total = 0;
         const summary = [];
@@ -20,13 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
             if (!select || !qtyInput) return;
 
             const price = parseInt(select.value) || 0;
-            let qty = parseInt(qtyInput.value) || 0;
-
-            // Force qty >= 1 for paid items
-            if (price > 0 && qty < 1) {
-                qty = 1;
-                qtyInput.value = 1;
-            }
+            const qty = parseInt(qtyInput.value) || 0; // 0 or empty = no cost
 
             total += price * qty;
 
@@ -36,17 +30,14 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
 
-        // Update DOM
         totalPriceEl.textContent = total;
-        if (itemsSummaryEl) {
-            itemsSummaryEl.textContent = summary.length > 0 ? summary.join(" • ") : "";
-        }
+        itemsSummaryEl.textContent = summary.length > 0 
+            ? summary.join(" • ") 
+            : "No items added yet";
     }
 
-    // Add new item row
+    // Add new item row (with remove button)
     addItemBtn.addEventListener("click", function () {
-        console.log("Add button clicked"); // debug
-
         const newRow = document.createElement("div");
         newRow.classList.add("item-row");
 
@@ -59,16 +50,26 @@ document.addEventListener("DOMContentLoaded", function () {
                 <option value="70">Fridge (any size) – ₵70</option>
                 <option value="0">Buckets / Small items – Free</option>
             </select>
-            <input type="number" class="quantity" min="1" value="1" required>
+            <input type="number" class="quantity" min="0" value="1">
+            <button type="button" class="remove-btn">Remove</button>
         `;
 
         itemsContainer.appendChild(newRow);
-        console.log("New row added");
-
         updateTotalAndSummary();
     });
 
-    // Live updates on any input/change inside itemsContainer
+    // Handle remove button clicks (delegation – works on new rows too)
+    itemsContainer.addEventListener("click", function (e) {
+        if (e.target.classList.contains("remove-btn")) {
+            const row = e.target.closest(".item-row");
+            if (row) {
+                row.remove();
+                updateTotalAndSummary();
+            }
+        }
+    });
+
+    // Live updates on input/change
     itemsContainer.addEventListener("input", updateTotalAndSummary);
     itemsContainer.addEventListener("change", function (e) {
         if (e.target.classList.contains("itemSelect")) {
@@ -76,8 +77,10 @@ document.addEventListener("DOMContentLoaded", function () {
             if (!row) return;
 
             const qtyInput = row.querySelector(".quantity");
+
+            // Disable quantity for free items (optional UX)
             if (e.target.value === "0") {
-                qtyInput.value = "1";
+                qtyInput.value = "1"; // or leave as is if you want
                 qtyInput.disabled = true;
             } else {
                 qtyInput.disabled = false;
@@ -90,15 +93,12 @@ document.addEventListener("DOMContentLoaded", function () {
     // Initial calculation
     updateTotalAndSummary();
 
-    // ────────────────────────────────────────────────
-    //   Form submission with double-click protection
-    // ────────────────────────────────────────────────
+    // Form submission with double-click protection
     form.addEventListener("submit", function (e) {
         e.preventDefault();
 
         const submitBtn = form.querySelector('button[type="submit"]');
 
-        // Prevent double submission
         if (submitBtn.disabled) return;
 
         submitBtn.disabled = true;
@@ -162,7 +162,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
                 updateTotalAndSummary();
 
-                // Reset button after success
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = 'Send Booking Request';
                 submitBtn.style.opacity = '1';
@@ -177,7 +176,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     confirmButtonColor: "#8B0000"
                 });
 
-                // Reset button on error so user can retry
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = 'Send Booking Request';
                 submitBtn.style.opacity = '1';
