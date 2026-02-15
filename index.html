@@ -148,16 +148,17 @@
 
         <div id="itemsContainer">
             <div class="item-row">
-                <select class="itemSelect" required>
-                    <option value="">Select Item</option>
-                    <option value="40">Small Bag – ₵40</option>
-                    <option value="50">Medium Bag – ₵50</option>
-                    <option value="60">Big Bag – ₵60</option>
-                    <option value="70">Fridge (any size) – ₵70</option>
-                    <option value="0">Buckets / Small items – Free</option>
-                </select>
-                <input type="number" class="quantity" min="1" value="1" required>
-            </div>
+    <select class="itemSelect" required>
+        <option value="">Select Item</option>
+        <option value="40">Small Bag – ₵40</option>
+        <option value="50">Medium Bag – ₵50</option>
+        <option value="60">Big Bag – ₵60</option>
+        <option value="70">Fridge (any size) – ₵70</option>
+        <option value="0">Buckets / Small items – Free</option>
+    </select>
+    <input type="number" class="quantity" min="0" value="1" required>
+    <button type="button" class="remove-btn">Remove</button>  <!-- NEW -->
+</div>
         </div>
 
         <button type="button" id="addItem" class="add-btn">+ Add Another Item</button>
@@ -201,5 +202,6 @@
 
 </body>
 </html>
+
 
 
