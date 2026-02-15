@@ -447,3 +447,30 @@ footer a {
         padding: 2rem 1.4rem;
     }
 }
+
+.remove-btn {
+    background: #ff4444; /* red */
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: all 0.25s ease;
+    margin-left: auto; /* pushes it to the right */
+}
+
+.remove-btn:hover {
+    background: #cc0000;
+    transform: scale(1.05);
+}
+
+.item-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    background: rgba(255,255,255,0.05);
+    padding: 12px;
+    border-radius: 12px;
+}
